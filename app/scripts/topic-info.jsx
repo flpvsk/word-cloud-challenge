@@ -9,11 +9,11 @@ var TopicInfo = React.createClass({
         <article>
           <header>
             Information on topic:
-            &lquote;
+            “
             <span className="topic-info__label">
               {this.props.topic.label}
             </span>
-            &rquote;
+            ”
           </header>
 
           <ul className="topic-info__metrics">
