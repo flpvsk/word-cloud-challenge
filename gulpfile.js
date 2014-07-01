@@ -36,7 +36,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('test', function() {
-  return gulp.src('test/spec/**/*.js', {read: false})
+  return gulp.src('test/specs.js', {read: false})
     .pipe(
       $.browserify({
         transform: ['reactify'],
