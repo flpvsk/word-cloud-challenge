@@ -24,10 +24,17 @@ var TopicInfo = React.createClass({
               </span>
             </li>
 
-            <li className="item--emphasize">
-              Total Mentions:
+            <li>
+              Positive Mentions:
               <span className="topic-info__positive">
                 {sentiment.positive}
+              </span>
+            </li>
+
+            <li>
+              Negative Mentions:
+              <span className="topic-info__negative">
+                {sentiment.negative}
               </span>
             </li>
           </ul>

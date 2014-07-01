@@ -14,6 +14,14 @@ describe('Topic Cloud', function() {
   }
 
 
+  function containerText(component, selector) {
+    var root = component.getDOMNode(),
+        container = root.querySelector(selector);
+    console.log(selector, container);
+    return container.innerText;
+  }
+
+
   it('should show topic name', function() {
     var topic,
         topicDOM,
@@ -51,7 +59,6 @@ describe('Topic Cloud', function() {
   it('should show positive mentions', function() {
     var topic,
         topicDOM,
-        positiveNode,
         topicInfo;
 
     topic = {
@@ -62,10 +69,23 @@ describe('Topic Cloud', function() {
 
     topicInfo = renderTopicInfoFor(topic);
 
-    topicDOM = topicInfo.getDOMNode();
-    positiveNode = topicDOM.querySelector('.topic-info__positive');
-    assert.equal(positiveNode.innerText, '29');
+    assert.equal(containerText(topicInfo, '.topic-info__positive'), '29');
   });
 
 
+  it('should show negative mentions', function() {
+    var topic,
+        topicDOM,
+        topicInfo;
+
+    topic = {
+      sentiment: {
+        negative: 14
+      }
+    };
+
+    topicInfo = renderTopicInfoFor(topic);
+
+    assert.equal(containerText(topicInfo, '.topic-info__negative'), '14');
+  });
 });
