@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "envify": "^1.2.1",
+    "es6-promise": "^1.0.0",
     "react": "^0.10.0"
   },
   "devDependencies": {
