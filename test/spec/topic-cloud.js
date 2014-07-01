@@ -57,4 +57,48 @@ describe('Topic Cloud', function() {
     topicNode = TestUtils.findRenderedComponentWithType(topicCloud, Topic);
     assert(topicNode.props.onClick);
   });
+
+
+  it('should change selected topic, when it gets clicked', function() {
+    var topic1 = {id: 'topic1'},
+        topic2 = {id: 'topic2'},
+        topics = [topic1, topic2],
+        topicCloud,
+
+    topicCloud = TopicCloud({topics: topics});
+    topicCloud = TestUtils.renderIntoDocument(topicCloud);
+    // Set selected topic to `topic1`
+    topicCloud.setState({'selectedTopic': topic1});
+    // Immitate callback call for `topic2`
+    topicCloud.selectTopic(topic2)();
+
+    assert.equal(topic2, topicCloud.state.selectedTopic);
+  });
+
+
+  it('should pass `selected` prop to child', function() {
+    var topic1 = {id: 'topic1'},
+        topic2 = {id: 'topic2'},
+        topicNodes,
+        topicCloud;
+
+    topicCloud = TopicCloud({topics: [topic1, topic2]});
+    topicCloud = TestUtils.renderIntoDocument(topicCloud);
+    topicCloud.setState({'selectedTopic': topic1});
+
+
+    topicNodes = TestUtils.scryRenderedComponentsWithType(topicCloud,
+        Topic);
+    topicNodes.forEach(function (topicNode) {
+      console.log(topicNode.props);
+      if (topicNode.props.key === 'topic1') {
+        assert(topicNode.props.selected, 'topic1 should be selected');
+      }
+
+      if (topicNode.props.key !== 'topic1') {
+        assert(!topicNode.props.selected,
+          topicNode.props.key + ' should not be selected');
+      }
+    });
+  });
 });

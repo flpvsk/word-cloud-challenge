@@ -5,19 +5,27 @@ var React = require('react/addons'),
 
 var TopicCloud = React.createClass({
 
-  onTopicClick: function(topicData) {
-    return function() {
-      // closuuuuure!!!
-    }
+  getInitialState: function() {
+    return {selectedTopic: this.props.topics[0]};
   },
+
+
+  selectTopic: function(topicData) {
+    return function() {
+      this.setState({selectedTopic: topicData});
+    }.bind(this);
+  },
+
 
   render: function() {
     var topicNodes;
 
     topicNodes = this.props.topics.map(function(topicData) {
+      var isSelected = this.state.selectedTopic === topicData;
       return <Topic
           key={topicData.id}
-          onClick={this.onTopicClick(topicData)}
+          onClick={this.selectTopic(topicData)}
+          selected={isSelected}
           label={topicData.label}
           sentimentScore={topicData.senimentScore} />
     }.bind(this));
