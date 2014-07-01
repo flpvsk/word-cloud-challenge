@@ -105,4 +105,17 @@ describe('Topic Cloud', function() {
 
     assert.equal(containerText(topicInfo, '.topic-info__neutral'), '3');
   });
+
+
+  it('should show zero if no sentiment', function() {
+    var topic,
+        topicDOM,
+        topicInfo;
+
+    topicInfo = renderTopicInfoFor({});
+
+    assert.equal(containerText(topicInfo, '.topic-info__positive'), '0');
+    assert.equal(containerText(topicInfo, '.topic-info__negative'), '0');
+    assert.equal(containerText(topicInfo, '.topic-info__neutral'), '0');
+  });
 });
