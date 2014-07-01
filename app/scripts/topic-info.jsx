@@ -4,7 +4,18 @@ var React = require('react/addons');
 
 var TopicInfo = React.createClass({
   render: function() {
-    return (<div />)
+    return (
+        <article>
+          <header>
+            Information on topic:
+            &lquote;
+            <span className="topic-info__label">
+              {this.props.topic.label}
+            </span>
+            &rquote;
+          </header>
+        </article>
+    );
   }
 });
 

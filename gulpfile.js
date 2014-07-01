@@ -54,7 +54,7 @@ gulp.task('test', function() {
 });
 
 gulp.task('watch-test', function() {
-  return gulp.watch(['app/scripts/**', 'test/spec/**'], ['test']);
+  return gulp.watch(['app/scripts/**', 'test/**/*.js'], ['test']);
 });
 
 gulp.task('html', ['styles', 'scripts'], function() {
