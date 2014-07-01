@@ -93,7 +93,18 @@ var React = require('react/addons');
 
 var TopicInfo = React.createClass({displayName: 'TopicInfo',
   render: function() {
-    var sentiment = this.props.topic.sentiment || {};
+    var sentiment = {
+      positive: 0,
+      negative: 0,
+      neutral: 0
+    };
+
+    sentiment = React.addons.update(sentiment, {
+      $merge: this.props.topic.sentiment || {}
+    });
+
+    console.log(sentiment);
+
     return (
         React.DOM.article(null, 
           React.DOM.header(null, 
