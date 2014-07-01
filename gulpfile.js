@@ -23,7 +23,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('./app/scripts/app.js')
+  return gulp.src('./app/scripts/app.jsx')
     .pipe(
       $.browserify({
         transform: ['reactify'],
@@ -33,6 +33,28 @@ gulp.task('scripts', function() {
     )
     .pipe($.concat('bundle.js'))
     .pipe(gulp.dest('./app/scripts'));
+});
+
+gulp.task('test', function() {
+  return gulp.src('test/specs.js', {read: false})
+    .pipe(
+      $.browserify({
+        transform: ['reactify'],
+        extensions: ['.jsx']
+      })
+    )
+    .pipe($.concat('test-suite.js'))
+    .pipe(gulp.dest('.tmp/'))
+    .pipe(
+      $.karma({
+        configFile: 'karma.conf.js',
+        action: 'run'
+      })
+    );
+});
+
+gulp.task('watch-test', function() {
+  return gulp.watch(['app/scripts/**', 'test/**/*.js'], ['test']);
 });
 
 gulp.task('html', ['styles', 'scripts'], function() {
@@ -133,6 +155,7 @@ gulp.task('watch', ['connect', 'serve'], function() {
     'app/*.html',
     '.tmp/styles/**/*.css',
     'app/scripts/**/*.js',
+    'app/scripts/**/*.jsx',
     'app/images/**/*'
   ]).on('change', function(file) {
     server.changed(file.path);
@@ -140,6 +163,7 @@ gulp.task('watch', ['connect', 'serve'], function() {
 
   gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
+  gulp.watch('app/scripts/**/*.jsx', ['scripts']);
   gulp.watch('app/images/**/*', ['images']);
   gulp.watch('bower.json', ['wiredep']);
 });
