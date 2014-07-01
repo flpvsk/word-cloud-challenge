@@ -7,6 +7,14 @@ var React = require('react/addons'),
 describe('Topic Cloud', function() {
   var TopicCloud = require('../../app/scripts/topic-cloud');
 
+  function oneTopicWithId(id) {
+    return {
+      topics: [
+        {id: id}
+      ]
+    }
+  }
+
   it('should render all passed topics', function() {
     var topicCloud, topicNodes;
 
@@ -31,15 +39,22 @@ describe('Topic Cloud', function() {
         topicNode;
 
 
-    topicCloud = TopicCloud({
-      topics: [
-        {id: topicId}
-      ]
-    });
-
+    topicCloud = TopicCloud(oneTopicWithId(topicId));
     topicCloud = TestUtils.renderIntoDocument(topicCloud);
 
     topicNode = TestUtils.findRenderedComponentWithType(topicCloud, Topic);
     assert.equal(topicNode.props.key, topicId);
+  });
+
+
+  it('should attach onclick callback to topic node', function () {
+    var topicCloud,
+        topicNode;
+
+    topicCloud = TopicCloud(oneTopicWithId('topic-id'));
+    topicCloud = TestUtils.renderIntoDocument(topicCloud);
+
+    topicNode = TestUtils.findRenderedComponentWithType(topicCloud, Topic);
+    assert(topicNode.props.onClick);
   });
 });
