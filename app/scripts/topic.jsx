@@ -3,7 +3,6 @@
 var React = require('react/addons');
 
 var Topic = React.createClass({
-
   propTypes: {
     size: React.PropTypes.number.isRequired,
     sentimentScore: React.PropTypes.number.isRequired
