@@ -32,6 +32,13 @@ var TopicInfo = React.createClass({
             </li>
 
             <li>
+              Neutral Mentions:
+              <span className="topic-info__neutral">
+                {sentiment.neutral}
+              </span>
+            </li>
+
+            <li>
               Negative Mentions:
               <span className="topic-info__negative">
                 {sentiment.negative}

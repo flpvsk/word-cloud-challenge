@@ -88,4 +88,21 @@ describe('Topic Cloud', function() {
 
     assert.equal(containerText(topicInfo, '.topic-info__negative'), '14');
   });
+
+
+  it('should show neutral mentions', function() {
+    var topic,
+        topicDOM,
+        topicInfo;
+
+    topic = {
+      sentiment: {
+        neutral: 3
+      }
+    };
+
+    topicInfo = renderTopicInfoFor(topic);
+
+    assert.equal(containerText(topicInfo, '.topic-info__neutral'), '3');
+  });
 });
