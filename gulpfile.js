@@ -35,6 +35,28 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./app/scripts'));
 });
 
+gulp.task('test', function() {
+  return gulp.src('test/spec/**/*.js', {read: false})
+    .pipe(
+      $.browserify({
+        transform: ['reactify'],
+        extensions: ['.jsx']
+      })
+    )
+    .pipe($.concat('test-suite.js'))
+    .pipe(gulp.dest('.tmp/'))
+    .pipe(
+      $.karma({
+        configFile: 'karma.conf.js',
+        action: 'run'
+      })
+    );
+});
+
+gulp.task('watch-test', function() {
+  return gulp.watch(['app/scripts/**', 'test/spec/**'], ['test']);
+});
+
 gulp.task('html', ['styles', 'scripts'], function() {
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');

@@ -1,1 +1,1 @@
-
+exports = function() {return 'a'};
