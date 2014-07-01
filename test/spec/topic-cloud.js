@@ -1,7 +1,8 @@
 /* global describe, it */
 var React = require('react/addons'),
     TestUtils = React.addons.TestUtils,
-    Topic = require('../../app/scripts/topic')
+    Topic = require('../../app/scripts/topic'),
+    TopicInfo = require('../../app/scripts/topic-info'),
     assert = require('assert');
 
 describe('Topic Cloud', function() {
@@ -100,5 +101,33 @@ describe('Topic Cloud', function() {
           topicNode.props.key + ' should not be selected');
       }
     });
+  });
+
+
+  it('should select first topic in list by default', function() {
+    var topic1 = {id: 'topic1'},
+        topic2 = {id: 'topic2'},
+        topicNodes,
+        topicCloud;
+
+    topicCloud = TopicCloud({topics: [topic1, topic2]});
+    topicCloud = TestUtils.renderIntoDocument(topicCloud);
+
+    assert.equal(topicCloud.state.selectedTopic, topic1);
+  });
+
+
+  it('should pass selected topic to topic-info component', function() {
+    var topic = {id: 'topic-id'},
+        topics = [topic],
+        topicCloud,
+
+    topicCloud = TopicCloud({topics: topics});
+    topicCloud = TestUtils.renderIntoDocument(topicCloud);
+    topicCloud.setState({'selectedTopic': topic});
+
+    topicInfo = TestUtils.findRenderedComponentWithType(topicCloud,
+        TopicInfo);
+    assert.equal(topicInfo.props.topic, topic);
   });
 });

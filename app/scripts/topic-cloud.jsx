@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
 
 var React = require('react/addons'),
-    Topic = require('./topic');
+    Topic = require('./topic'),
+    TopicInfo = require('./topic-info');
 
 var TopicCloud = React.createClass({
 
@@ -32,7 +33,10 @@ var TopicCloud = React.createClass({
 
     return (
         <div>
-          {topicNodes}
+          <div className="topics">
+            {topicNodes}
+          </div>
+          <TopicInfo topic={this.state.selectedTopic} />
         </div>
     );
   }
