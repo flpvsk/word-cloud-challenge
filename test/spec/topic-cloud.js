@@ -22,6 +22,24 @@ describe('Topic Cloud', function() {
         Topic);
 
     assert.equal(topicNodes.length, 3);
+  });
 
+
+  it('should assign a key for topic node to id', function() {
+    var topicId = 'topic-123',
+        topicCloud,
+        topicNode;
+
+
+    topicCloud = TopicCloud({
+      topics: [
+        {id: topicId}
+      ]
+    });
+
+    topicCloud = TestUtils.renderIntoDocument(topicCloud);
+
+    topicNode = TestUtils.findRenderedComponentWithType(topicCloud, Topic);
+    assert.equal(topicNode.props.key, topicId);
   });
 });

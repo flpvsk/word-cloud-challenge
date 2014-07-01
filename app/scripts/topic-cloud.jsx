@@ -10,15 +10,15 @@ var TopicCloud = React.createClass({
 
     topicNodes = this.props.topics.map(function(topicData) {
       return <Topic
+          key={topicData.id}
           label={topicData.label}
-          sentimentScore={topicData.senimentScore}
-          ref="topicNodes" />
+          sentimentScore={topicData.senimentScore} />
     });
 
     return (
-      <div>
-        {topicNodes}
-      </div>
+        <div>
+          {topicNodes}
+        </div>
     );
   }
 
