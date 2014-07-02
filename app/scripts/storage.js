@@ -1,5 +1,19 @@
 var Promise = require('es6-promise').Promise;
 
+/**
+ * Fetch a list of topics.
+ * Returns an object.
+ *
+ * Example of result:
+ *    {
+ *      "topics": [
+ *        {"id": "1", ...}
+ *        {"id": "2", ...}
+ *        ...
+ *        {"id": "n", ...}
+ *      ]
+ *    }
+ */
 exports.getTopics = function() {
   return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();
