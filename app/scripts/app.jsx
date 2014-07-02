@@ -6,10 +6,9 @@ var React = require('react/addons'),
 
 Storage.getTopics()
   .then(function(topicData) {
-    console.log(document.getElementById('app'));
     React.renderComponent(
       <TopicCloud topics={topicData.topics} />,
-      document.getElementById('app')
+      document.querySelector('.app')
     );
   })
   // `catch` is reserved in IE9
