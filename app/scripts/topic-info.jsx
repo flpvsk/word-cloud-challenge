@@ -17,7 +17,7 @@ var TopicInfo = React.createClass({
     console.log(sentiment);
 
     return (
-        <article>
+        <article className="topic-info">
           <header>
             Information on topic:
             “

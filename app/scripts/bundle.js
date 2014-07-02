@@ -72,7 +72,7 @@ var TopicCloud = React.createClass({displayName: 'TopicCloud',
     }.bind(this));
 
     return (
-        React.DOM.div(null, 
+        React.DOM.div( {className:"topic-cloud"}, 
           React.DOM.div( {className:"topics"}, 
             topicNodes
           ),
@@ -105,7 +105,7 @@ var TopicInfo = React.createClass({displayName: 'TopicInfo',
     console.log(sentiment);
 
     return (
-        React.DOM.article(null, 
+        React.DOM.article( {className:"topic-info"}, 
           React.DOM.header(null, 
             "Information on topic:"+' '+
             "“",

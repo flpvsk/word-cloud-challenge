@@ -13,10 +13,12 @@ var browserify = require('browserify'),
 
 gulp.task('styles', function() {
   return gulp.src('app/styles/main.scss')
-    .pipe($.rubySass({
-      style: 'expanded',
-      precision: 10
-    }))
+    .pipe(
+      $.rubySass({
+        style: 'expanded',
+        precision: 10
+      }).on('error', gutil.log)
+    )
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe($.size());

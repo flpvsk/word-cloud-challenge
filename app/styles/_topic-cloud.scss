@@ -1,0 +1,7 @@
+.topic-cloud {
+  @include make-row();
+}
+
+.topics, .topic-info {
+  @include make-md-column(6);
+}

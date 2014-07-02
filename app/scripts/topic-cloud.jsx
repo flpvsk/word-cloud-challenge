@@ -49,7 +49,7 @@ var TopicCloud = React.createClass({
     }.bind(this));
 
     return (
-        <div>
+        <div className="topic-cloud">
           <div className="topics">
             {topicNodes}
           </div>
