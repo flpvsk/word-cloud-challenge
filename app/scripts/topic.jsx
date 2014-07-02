@@ -16,9 +16,13 @@ var Topic = React.createClass({
         i;
 
     topicCls['topic--size-' + this.props.size] = true;
+    topicCls['topic--is-selected'] = this.props.selected;
+
     topicCls['topic--sentiment-positive'] = sentimentScore > 60;
     topicCls['topic--sentiment-negative'] = sentimentScore < 40;
-    topicCls['topic--sentiment-neutral'] = 40 < sentimentScore < 60;
+    topicCls['topic--sentiment-neutral'] = (sentimentScore > 40 &&
+        sentimentScore < 60);
+
 
     return (
       <a onClick={onClick} className={React.addons.classSet(topicCls)}>

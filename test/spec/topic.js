@@ -90,4 +90,16 @@ describe('topic', function() {
 
     assert(called, 'Callback was not called!');
   });
+
+
+  it('should have selected class if selected', function() {
+    var topic, classes;
+
+    topic = Topic({selected: true});
+    topic = TestUtils.renderIntoDocument(topic);
+
+    classes = topic.getDOMNode().classList;
+    assert(classes.contains('topic--is-selected'),
+        classes + ' should contain "topic--is-selected"');
+  });
 });
