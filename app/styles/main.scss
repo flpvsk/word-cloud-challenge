@@ -1,14 +1,14 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 
-// bower:scss
-@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
-// endbower
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_variables.scss";
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_mixins.scss";
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_grid.scss";
 
 @import "./_topic-cloud.scss";
 
 /* Base */
-* {
-  box-sizing: border-box;
+*, *:before, *:after {
+  @include box-sizing(border-box);
 }
 
 body {

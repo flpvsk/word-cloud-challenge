@@ -18,7 +18,7 @@ gulp.task('styles', function() {
         precision: 10
       }).on('error', gutil.log)
     )
-    .pipe($.autoprefixer('last 1 version'))
+    .pipe($.autoprefixer('last 3 version'))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe($.size());
 });
