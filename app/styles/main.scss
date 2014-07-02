@@ -7,63 +7,43 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_grid.scss";
 // endbower
 
+@import "./_topic-cloud.scss";
 
-
-
-/* Space out content a bit */
+/* Base */
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.app,
-.footer {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Custom page header */
 .header {
-    border-bottom: 1px solid #e5e5e5;
-
-    /* Make the masthead heading the same height as the navigation */
-    h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
-        padding-bottom: 19px;
-    }
+  border-bottom: 1px solid #e5e5e5;
 }
 
-/* Custom page footer */
+.app {
+  padding-top: 1em;
+}
+
 .footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
+  padding-top: 1em;
+  border-top: 1px solid #e5e5e5;
 }
 
-.container-narrow > hr {
-    margin: 30px 0;
+
+/* Typography */
+body {
+  font-size: 18px;
+  font-family: 'Helvetica Neue', Helvetica,
+               Arial, 'Lucida Grande', sans-serif;
+  color: $gray-darker;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
-    }
+a {
+  color: $link-color;
+  cursor: pointer;
+  text-decoration: none;
 
-    /* Remove the padding we set earlier */
-    .header,
-    .app,
-    .footer {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    /* Space out the masthead */
-    .header {
-        margin-bottom: 30px;
-    }
+  &:hover {
+    color: $link-hover-color;
+  }
 }
+
