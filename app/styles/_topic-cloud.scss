@@ -2,12 +2,18 @@
   @include make-row();
 }
 
-.topics, .topic-info {
+.topics {
   @include make-md-column(6);
+}
+
+.topic-info {
+  @include make-md-column-offset(1);
+  @include make-md-column(5);
 }
 
 .topics {
   font-size: 1.5em;
+  text-align: center;
 
   .topic--size-1 { font-size: 0.50em; }
   .topic--size-2 { font-size: 0.75em; }
@@ -24,4 +30,25 @@
   .topic {
     padding-right: 20px;
   }
+}
+
+.topic-info {
+  padding-top: 0.5em;
+}
+
+ul.topic-info__metrics {
+  padding: 0;
+
+  .item--emphasize {
+    margin: 1em 0;
+  }
+
+  .topic-info__volume,
+  .topic-info__positive,
+  .topic-info__negative,
+  .topic-info__neutral {
+    margin: .5em;
+  }
+
+  list-style: none;
 }
