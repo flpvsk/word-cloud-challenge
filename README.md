@@ -31,5 +31,4 @@ Demo: [filipovskii.github.io/word-cloud-challenge][demo]
       <TopicInfo />
     </TopicCloud>
 
-
 [demo]: https://filipovskii.github.io/word-cloud-challenge

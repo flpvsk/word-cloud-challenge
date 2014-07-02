@@ -2,6 +2,18 @@
 
 var React = require('react/addons');
 
+/**
+ * Renders a single topic in a cloud.
+ *
+ * Usage:
+ *    <Topic
+ *        label="Berlin"
+ *        size=1
+ *        selected=true
+ *        sentimentScore=31
+ *        onClick={cb} />
+ *
+ */
 var Topic = React.createClass({
   propTypes: {
     size: React.PropTypes.number.isRequired,
