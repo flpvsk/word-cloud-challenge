@@ -15,6 +15,7 @@ var Topic = React.createClass({
         onClick = this.props.onClick,
         i;
 
+    topicCls['topic'] = true;
     topicCls['topic--size-' + this.props.size] = true;
     topicCls['topic--is-selected'] = this.props.selected;
 

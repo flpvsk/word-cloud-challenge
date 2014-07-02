@@ -45,7 +45,7 @@ var TopicCloud = React.createClass({
           selected={isSelected}
           label={topicData.label}
           size={size}
-          sentimentScore={topicData.senimentScore} />
+          sentimentScore={topicData.sentimentScore} />
     }.bind(this));
 
     return (

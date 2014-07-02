@@ -59,16 +59,33 @@ var TopicCloud = React.createClass({displayName: 'TopicCloud',
 
 
   render: function() {
-    var topicNodes;
+    var topics = this.props.topics,
+        minVolume = Infinity,
+        maxVolume = -Infinity,
+        volumeStep,
+        topicNodes;
 
-    topicNodes = this.props.topics.map(function(topicData) {
-      var isSelected = this.state.selectedTopic === topicData;
+    topics.forEach(function(topic) {
+      if (topic.volume < minVolume) minVolume = topic.volume;
+      if (topic.volume > maxVolume) maxVolume = topic.volume;
+    });
+    // 5 = number of available sizes - 1
+    volumeStep = (maxVolume - minVolume) / 5;
+
+    topicNodes = topics.map(function(topicData) {
+      var isSelected,
+          size;
+
+      isSelected = this.state.selectedTopic === topicData;
+      size = Math.floor((topicData.volume - minVolume) / volumeStep) + 1;
+
       return Topic(
           {key:topicData.id,
           onClick:this.selectTopic(topicData),
           selected:isSelected,
           label:topicData.label,
-          sentimentScore:topicData.senimentScore} )
+          size:size,
+          sentimentScore:topicData.sentimentScore} )
     }.bind(this));
 
     return (
@@ -169,6 +186,7 @@ var Topic = React.createClass({displayName: 'Topic',
         onClick = this.props.onClick,
         i;
 
+    topicCls['topic'] = true;
     topicCls['topic--size-' + this.props.size] = true;
     topicCls['topic--is-selected'] = this.props.selected;
 
