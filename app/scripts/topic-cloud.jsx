@@ -37,7 +37,7 @@ var TopicCloud = React.createClass({
           size;
 
       isSelected = this.state.selectedTopic === topicData;
-      size = (topicData.volume - minVolume) / volumeStep + 1;
+      size = Math.floor((topicData.volume - minVolume) / volumeStep) + 1;
 
       return <Topic
           key={topicData.id}
