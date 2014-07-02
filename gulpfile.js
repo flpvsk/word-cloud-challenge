@@ -34,7 +34,7 @@ gulp.task('scripts', function() {
       .on('error', gutil.log)
     )
     .pipe($.concat('bundle.js'))
-    .pipe(gulp.dest('./app/scripts'));
+    .pipe(gulp.dest('./app/.tmp/'));
 });
 
 gulp.task('test', function() {
