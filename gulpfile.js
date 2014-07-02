@@ -8,8 +8,7 @@ var gutil = require('gulp-util');
 var $ = require('gulp-load-plugins')();
 
 // browserify stuff
-var browserify = require('browserify'),
-  source = require('vinyl-source-stream');
+var browserify = require('browserify');
 
 gulp.task('styles', function() {
   return gulp.src('app/styles/main.scss')
