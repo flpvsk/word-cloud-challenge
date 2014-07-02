@@ -2,6 +2,18 @@
 
 var React = require('react/addons');
 
+/**
+ * Renders a single topic in a cloud.
+ *
+ * Usage:
+ *    <Topic
+ *        label="Berlin"
+ *        size=1
+ *        selected=true
+ *        sentimentScore=31
+ *        onClick={cb} />
+ *
+ */
 var Topic = React.createClass({
   propTypes: {
     size: React.PropTypes.number.isRequired,
@@ -15,10 +27,15 @@ var Topic = React.createClass({
         onClick = this.props.onClick,
         i;
 
+    topicCls['topic'] = true;
     topicCls['topic--size-' + this.props.size] = true;
+    topicCls['topic--is-selected'] = this.props.selected;
+
     topicCls['topic--sentiment-positive'] = sentimentScore > 60;
     topicCls['topic--sentiment-negative'] = sentimentScore < 40;
-    topicCls['topic--sentiment-neutral'] = 40 < sentimentScore < 60;
+    topicCls['topic--sentiment-neutral'] = (sentimentScore > 40 &&
+        sentimentScore < 60);
+
 
     return (
       <a onClick={onClick} className={React.addons.classSet(topicCls)}>

@@ -130,4 +130,29 @@ describe('Topic Cloud', function() {
         TopicInfo);
     assert.equal(topicInfo.props.topic, topic);
   });
+
+
+  it('should set size of topic relatively to all', function() {
+    var topicCloud,
+        topicNodes,
+        topics;
+
+    topics = [
+      {id: '1', volume: 1},
+      {id: '2', volume: 2},
+      {id: '3', volume: 3},
+      {id: '4', volume: 4},
+      {id: '5', volume: 5},
+      {id: '6', volume: 6},
+    ];
+
+    topicCloud = TopicCloud({topics: topics});
+    topicCloud = TestUtils.renderIntoDocument(topicCloud);
+
+    topicNodes = TestUtils.scryRenderedComponentsWithType(topicCloud,
+        Topic);
+    topicNodes.forEach(function(topicNode) {
+      assert.equal(topicNode.props.size, parseInt(topicNode.props.key));
+    });
+  });
 });

@@ -8,15 +8,16 @@ var gutil = require('gulp-util');
 var $ = require('gulp-load-plugins')();
 
 // browserify stuff
-var browserify = require('browserify'),
-  source = require('vinyl-source-stream');
+var browserify = require('browserify');
 
 gulp.task('styles', function() {
   return gulp.src('app/styles/main.scss')
-    .pipe($.rubySass({
-      style: 'expanded',
-      precision: 10
-    }))
+    .pipe(
+      $.rubySass({
+        style: 'expanded',
+        precision: 10
+      }).on('error', gutil.log)
+    )
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe($.size());
@@ -32,7 +33,7 @@ gulp.task('scripts', function() {
       .on('error', gutil.log)
     )
     .pipe($.concat('bundle.js'))
-    .pipe(gulp.dest('./app/scripts'));
+    .pipe(gulp.dest('./app/.tmp/'));
 });
 
 gulp.task('test', function() {

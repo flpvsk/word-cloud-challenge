@@ -2,8 +2,16 @@
 
 var React = require('react/addons');
 
+/**
+ * Renders topic's detailed info.
+ *
+ * Usage:
+ *    <TopicInfo topic={topic} />
+ *
+ */
 var TopicInfo = React.createClass({
   render: function() {
+    // All sentiment metrics are 0 by default
     var sentiment = {
       positive: 0,
       negative: 0,
@@ -14,10 +22,8 @@ var TopicInfo = React.createClass({
       $merge: this.props.topic.sentiment || {}
     });
 
-    console.log(sentiment);
-
     return (
-        <article>
+        <article className="topic-info">
           <header>
             Information on topic:
             “

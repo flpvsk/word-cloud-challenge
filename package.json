@@ -1,9 +1,14 @@
 {
   "name": "word-cloud",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filipovskii/word-cloud-challenge.git"
+  },
   "dependencies": {
     "envify": "^1.2.1",
     "es6-promise": "^1.0.0",
+    "lodash": "^2.4.1",
     "react": "^0.10.0"
   },
   "devDependencies": {
