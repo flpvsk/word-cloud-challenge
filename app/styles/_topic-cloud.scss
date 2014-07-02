@@ -22,9 +22,29 @@
   .topic--size-5 { font-size: 1.50em; }
   .topic--size-6 { font-size: 1.75em; }
 
+  .topic--sentiment-positive {
+    color: $brand-success;
+    &:hover, &.topic--is-selected {
+      color: darken($brand-success, 15%);
+    }
+  }
+
+  .topic--sentiment-negative {
+    color: $brand-danger;
+    &:hover, &.topic--is-selected {
+      color: darken($brand-danger, 15%);
+    }
+  }
+
+  .topic--sentiment-neutral {
+    color: $gray-light;
+    &:hover, &.topic--is-selected {
+      color: darken($gray-light, 15%);
+    }
+  }
+
   .topic--is-selected {
     text-decoration: underline;
-    color: $link-hover-color;
   }
 
   .topic {
@@ -33,7 +53,12 @@
 }
 
 .topic-info {
-  padding-top: 0.5em;
+  padding-top: .5em;
+
+  @media (max-width: $screen-md-min) {
+    text-align: center;
+    margin-top: 2em;
+  }
 }
 
 ul.topic-info__metrics {
