@@ -14,7 +14,7 @@ describe('Storage', function() {
 
   describe('getTopics method', function() {
     it('should return promise', function() {
-      var result = Storage.getTopics()
+      var result = Storage.getTopics();
 
       assert(result);
       assert(result.then);

@@ -2,7 +2,7 @@ var Promise = require('es6-promise').Promise;
 
 /**
  * Fetch a list of topics.
- * Returns an object.
+ * Returns a promise.
  *
  * Example of result:
  *    {
